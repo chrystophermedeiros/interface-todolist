@@ -1,6 +1,13 @@
 {
   "name": "interface-todolist",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Projeto para gerenciar tarefas",
+  "author": "Chrystopher Medeiros",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrystophermedeiros/interface-todolist.git"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
