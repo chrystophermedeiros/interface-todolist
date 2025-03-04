@@ -1,21 +1,18 @@
 "use client";
+import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import useRedirectIfAuthenticated from "@/hooks/RedirectIfAuthenticated";
 import apiTodolist from "@/services/api";
 import { CreateUser } from "@/types";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { useForm, Controller } from "react-hook-form";
-import { Button } from "@/components/Button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useForm, Controller } from "react-hook-form";
+import { toast } from "react-toastify";
+import * as yup from "yup";
 
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email("E-mail inválido")
-    .required("E-mail é obrigatório"),
+  email: yup.string().email("E-mail inválido").required("E-mail é obrigatório"),
   name: yup
     .string()
     .min(5, "O nome deve ter no mínimo 5 caracteres")
@@ -66,9 +63,7 @@ export default function Register() {
         }, 1500);
       } else if (status === 409) {
         if (data.field === "email") {
-          toast.error(
-            "E-mail já cadastrado! Faça login para continuar.",
-          );
+          toast.error("E-mail já cadastrado! Faça login para continuar.");
         } else if (data.field === "usernameGitHub") {
           toast.error(
             "Username do GitHub já cadastrado! Faça login para continuar.",
@@ -130,9 +125,7 @@ export default function Register() {
               )}
             />
             {errors.email && (
-              <span style={{ color: "red" }}>
-                {errors.email.message}
-              </span>
+              <span style={{ color: "red" }}>{errors.email.message}</span>
             )}
           </div>
 
@@ -159,9 +152,7 @@ export default function Register() {
               )}
             />
             {errors.password && (
-              <span style={{ color: "red" }}>
-                {errors.password.message}
-              </span>
+              <span style={{ color: "red" }}>{errors.password.message}</span>
             )}
           </div>
 
@@ -189,9 +180,7 @@ export default function Register() {
               )}
             />
             {errors.password && (
-              <span style={{ color: "red" }}>
-                {errors.name?.message}
-              </span>
+              <span style={{ color: "red" }}>{errors.name?.message}</span>
             )}
           </div>
 
@@ -224,11 +213,7 @@ export default function Register() {
             )}
           </div>
 
-          <Button
-            text="Cadastrar"
-            id="login-button"
-            nameType={"submit"}
-          />
+          <Button text="Cadastrar" id="login-button" nameType={"submit"} />
         </form>
       </div>
     </main>

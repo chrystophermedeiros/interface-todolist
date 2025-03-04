@@ -4,11 +4,11 @@ import { useTasks } from "@/hooks/TaskContext";
 import { useUser } from "@/hooks/UserContext";
 import apiTodolist from "@/services/api";
 import { Task } from "@/types";
-import { toast } from "react-toastify";
-import { AxiosError } from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { AxiosError } from "axios";
 import { useForm, Controller } from "react-hook-form";
+import { toast } from "react-toastify";
+import * as yup from "yup";
 
 const schema = yup.object().shape({
   title: yup

@@ -4,7 +4,7 @@ interface ButtonProps {
   text?: string;
   className?: string;
   icon?: React.ReactNode;
-  cleanStyle?: boolean; 
+  cleanStyle?: boolean;
   nameTitle?: string;
   action?: () => void;
   nameType?: "button" | "submit";
@@ -40,7 +40,7 @@ export const Button: FC<ButtonProps> = ({
       onClick={action}
       type={nameType}
       title={nameTitle}
-      className={finalClass.trim()} 
+      className={finalClass.trim()}
     >
       <div className="flex items-center gap-2">
         {icon}

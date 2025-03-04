@@ -40,14 +40,15 @@ export default function Home() {
         </article>
 
         <Modal
-          children={<CreateUser />}
           title="Criar tarefa"
           isOpen={isOpen}
           buttonType="submit"
           labelButtonconfirm="Cadastrar"
           idForm="form-create-task"
           onClose={handleCloseModal}
-        />
+        >
+          <CreateUser />
+        </Modal>
       </aside>
       <Footer />
     </main>

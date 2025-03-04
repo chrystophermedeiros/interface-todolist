@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const useRedirectIfAuthenticated = () => {
   const router = useRouter();
@@ -10,9 +9,9 @@ const useRedirectIfAuthenticated = () => {
     const token = Cookies.get("userData");
 
     if (token) {
-      router.push("/"); 
+      router.push("/");
     }
-  }, []);
+  }, [router]);
 };
 
 export default useRedirectIfAuthenticated;

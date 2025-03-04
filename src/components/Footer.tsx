@@ -7,7 +7,9 @@ export const Footer: React.FC = () => {
         &copy; {new Date().getFullYear()} Todolist. Todos os direitos
         reservados.
       </p>
-      <p className="text-xs text-color-green-forest">Versão {packageJson.version}</p>
+      <p className="text-xs text-color-green-forest">
+        Versão {packageJson.version}
+      </p>
     </footer>
   );
 };

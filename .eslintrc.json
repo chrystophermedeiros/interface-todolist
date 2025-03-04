@@ -8,7 +8,9 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "next",
+    "next/core-web-vitals"
   ],
   "ignorePatterns": [
     "dist"
@@ -20,9 +22,10 @@
     "eslint-plugin-import-helpers"
   ],
   "rules": {
+    "@typescript-eslint/no-explicit-any": "error",
     "import-helpers/order-imports": [
       "warn",
-      { 
+      {
         "newlinesBetween": "always",
         "groups": [
           "/^node:*/",
