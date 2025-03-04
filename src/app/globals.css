@@ -1,21 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background-primary: #F2F2F2;
+  --background-white: #ffffff;
+  --background-black: #030712;
+  --color-green-forest:#067538;
+  --color-yellow-sunshine:#FFE900;
+  --color-orange-fire:#E54E19;
+  --color-brown-earth:#733702;
+  --color-white:#ffffff;
+  --color-black:#000000;
+  --color-black-blue:#030712;
+  --font-roboto: "Roboto", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: ligth) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background-primary: #030712;
+    --color-black: #ffffff;
   }
 }
 
+
+.dark {
+  --background-primary: #030712;
+  --background-white: #111827;
+  --background-black: #F2F2F2;
+  --color-green-forest: #3DDC84;
+  --color-yellow-sunshine: #FFD700;
+  --color-orange-fire: #FF784F;
+  --color-brown-earth: #A05A2C;
+  --color-white: #040404;
+  --color-black: #ffffff;
+  --color-black-blue:#F2F2F2;
+  
+}
+
+
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-black);
+  background: var(--background-white);
+  font-family: var(--font-roboto);
 }
