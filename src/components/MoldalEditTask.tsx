@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import { Modal } from "./Modal";
-import apiTodolist from "@/services/api";
-import { useTasks } from "@/hooks/TaskContext";
-import { Task } from "@/types";
 import { TaskStatusEnum } from "@/enums/taskStatus";
+import { useTasks } from "@/hooks/TaskContext";
+import apiTodolist from "@/services/api";
+import { Task } from "@/types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { toast } from "react-toastify";
+import * as yup from "yup";
+
 import { Input } from "./Input";
+import { Modal } from "./Modal";
 
 interface ModalUpdateTaskProps {
   taskId: string | null;
@@ -17,11 +18,21 @@ interface ModalUpdateTaskProps {
 }
 
 const schema = yup.object().shape({
-  title: yup.string().required("O título é obrigatório"),
-  description: yup.string(),
+  title: yup
+    .string()
+    .min(3, "O título deve ter no mínimo 3 caracteres")
+    .required("O título é obrigatório"),
+  description: yup.string().min(5, "O título deve ter no mínimo 3 caracteres"),
   expirationDate: yup.string(),
   status: yup.string(),
 });
+
+interface FormData {
+  title: string;
+  description?: string;
+  expirationDate?: string;
+  status?: string;
+}
 
 export const ModalUpdateTask = ({
   taskId,
@@ -36,7 +47,7 @@ export const ModalUpdateTask = ({
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
 
@@ -62,7 +73,7 @@ export const ModalUpdateTask = ({
     }
   }, [taskId, isOpen, setValue]);
 
-  const handleConfirmUpdate = async (data: any) => {
+  const handleConfirmUpdate = async (data: FormData) => {
     if (!taskData) return;
 
     const formattedData = {
@@ -72,7 +83,10 @@ export const ModalUpdateTask = ({
     };
 
     try {
-      const response = await apiTodolist.patch(`/task/${taskId}`, formattedData);
+      const response = await apiTodolist.patch(
+        `/task/${taskId}`,
+        formattedData,
+      );
       if (response.status === 200) {
         toast.success("Tarefa atualizada com sucesso!");
         putTask(response.data.task);

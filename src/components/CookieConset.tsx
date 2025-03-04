@@ -1,7 +1,5 @@
-
-
-import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 export const CookieConsent: React.FC = () => {
@@ -17,20 +15,18 @@ export const CookieConsent: React.FC = () => {
     }
   }, []);
 
-  
   if (hasConsented) return null;
 
-
-   const acceptCookies = () => {
+  const acceptCookies = () => {
     Cookies.set("cookieConsent", "true", { expires: 30 });
     toast.success("Você aceitou os cookies!");
     setHasConsented(true);
-    setShowBanner(false); 
+    setShowBanner(false);
   };
 
   const declineCookies = () => {
     toast.info("Você recusou os cookies.");
-    setShowBanner(false); 
+    setShowBanner(false);
     setTimeout(() => {
       window.location.href = "/";
     }, 2500);

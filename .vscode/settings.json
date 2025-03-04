@@ -5,7 +5,9 @@
     "editor.fontLigatures": true,
     "workbench.colorTheme": "Dracula",
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
+        "source.fixAll": "explicit",
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.ts": "explicit",
     },
     "git.autofetch": true,
     "window.zoomLevel": 1,

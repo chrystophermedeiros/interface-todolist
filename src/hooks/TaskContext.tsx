@@ -1,10 +1,10 @@
 "use client";
 
-import { Task } from "@/types";
-import { createContext, useContext, useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import { toast } from "react-toastify";
 import { TaskStatusEnum } from "@/enums/taskStatus";
+import { Task } from "@/types";
+import Cookies from "js-cookie";
+import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 interface TasksContextType {
   tasks: Task[];
@@ -48,19 +48,22 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
       toast.error("ID da tarefa não encontrado");
       return;
     }
-    const updatedTasks = tasks.map((task) =>
-      task.id === id
-        ? {
-            ...task,
-            status:
-              task.status === TaskStatusEnum.PENDING
-                ? TaskStatusEnum.DONE
-                : TaskStatusEnum.PENDING,
-          }
-        : task,
+
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id
+          ? {
+              ...task,
+              status:
+                task.status === TaskStatusEnum.PENDING
+                  ? TaskStatusEnum.DONE
+                  : TaskStatusEnum.PENDING,
+            }
+          : task,
+      ),
     );
-    setTasks(updatedTasks);
-    Cookies.set("tasksData", JSON.stringify(updatedTasks));
+
+    Cookies.set("tasksData", JSON.stringify(tasks));
   };
 
   const deleteTask = async (taskId: string) => {
@@ -80,6 +83,7 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
       try {
         setTasks(JSON.parse(storedTasks));
       } catch (error) {
+        throw new Error("Erro ao processar as tasks armazenadas");
       }
     }
   }, []);

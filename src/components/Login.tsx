@@ -1,15 +1,16 @@
+import { useUser } from "@/hooks/UserContext";
+import apiTodolist from "@/services/api";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Cookies from "js-cookie";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { useUser } from "@/hooks/UserContext";
-import { toast } from "react-toastify";
-import apiTodolist from "@/services/api";
-import { Input } from "./Input";
-import Cookies from "js-cookie";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
+import { toast } from "react-toastify";
+import * as yup from "yup";
+
 import { Button } from "./Button";
-import Link from "next/link";
+import { Input } from "./Input";
 
 const schema = yup.object().shape({
   email: yup.string().email("E-mail inválido").required("E-mail é obrigatório"),
@@ -56,7 +57,9 @@ export const LoginComponent: React.FC = () => {
       setTimeout(() => {
         router.push("/");
       }, 1000);
-    } catch (error) {}
+    } catch (error) {
+      toast.done;
+    }
   };
 
   return (

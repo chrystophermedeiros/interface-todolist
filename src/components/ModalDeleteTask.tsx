@@ -1,7 +1,8 @@
-import { toast } from "react-toastify";
-import { Modal } from "./Modal";
-import apiTodolist from "@/services/api";
 import { useTasks } from "@/hooks/TaskContext";
+import apiTodolist from "@/services/api";
+import { toast } from "react-toastify";
+
+import { Modal } from "./Modal";
 
 interface ModalDeleteTaskProps {
   taskId: string | null;
@@ -45,7 +46,7 @@ export const ModalDeleteTask = ({
       buttonType="button"
     >
       <div>
-      <p>Você tem certeza que deseja excluir esta tarefa?</p>
+        <p>Você tem certeza que deseja excluir esta tarefa?</p>
       </div>
     </Modal>
   );

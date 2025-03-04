@@ -3,6 +3,7 @@ import { IcBaselineLogout } from "@/icons/baseline-logout";
 import { getGithubAvatar } from "@/services/apiGitHub";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
 import { InfoItem } from "./InfoItem";
 
 export const Hero = () => {
@@ -19,7 +20,7 @@ export const Hero = () => {
     };
 
     fetchAvatarUrl();
-  }, []);
+  }, [userData?.user?.usernameGitHub]);
 
   return (
     <main title="Clique para abrir o menu">

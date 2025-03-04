@@ -1,22 +1,20 @@
 "use client";
 
-import { Hero } from "./Hero";
 import { useTheme } from "@/hooks/ThemeContext";
-import Link from "next/link";
 import { IcBaselineBrightnessHigh } from "@/icons/baseline-brightness-high";
 import { IcBaselineNightlightRound } from "@/icons/baseline-nigtligrh-round";
 import Image from "next/image";
+import Link from "next/link";
+
+import { Hero } from "./Hero";
 
 export const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header
-     
-      className="fixed top-0 w-full z-20 h-16 bg-background-primary shadow-xl  flex items-center justify-between p-4"
-    >
+    <header className="fixed top-0 w-full z-20 h-16 bg-background-primary shadow-xl  flex items-center justify-between p-4">
       <nav>
-        <Link  title="Clique para voltar a página inicial" href="/">
+        <Link title="Clique para voltar a página inicial" href="/">
           <Image
             src="/favicon.ico"
             alt="Logo"

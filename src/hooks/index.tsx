@@ -1,9 +1,10 @@
 "use client";
 
 import { ReactNode } from "react";
-import { UserProvider } from "./UserContext";
-import { ThemeProvider } from "./ThemeContext";
+
 import { TasksProvider } from "./TaskContext";
+import { ThemeProvider } from "./ThemeContext";
+import { UserProvider } from "./UserContext";
 
 interface AppProviderProps {
   children: ReactNode;

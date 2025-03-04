@@ -1,19 +1,20 @@
-import { useState, useEffect } from "react";
-import { useTasks } from "@/hooks/TaskContext";
-import apiTodolist from "@/services/api";
-import { Loading } from "./Loading";
-import { toast } from "react-toastify";
-import { formatDate } from "@/util/formatDate";
-import { InfoItem } from "./InfoItem";
-import { Task } from "@/types";
-import Cookies from "js-cookie";
-import { IcBaselineEdit } from "@/icons/baseline-edit";
-import { IcBaselineDelete } from "@/icons/baseline-delete";
 import { TaskStatusEnum } from "@/enums/taskStatus";
+import { useTasks } from "@/hooks/TaskContext";
+import { IcBaselineDelete } from "@/icons/baseline-delete";
+import { IcBaselineEdit } from "@/icons/baseline-edit";
+import apiTodolist from "@/services/api";
+import { Task } from "@/types";
+import { formatDate } from "@/util/formatDate";
+import Cookies from "js-cookie";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+
+import { Button } from "./Button";
+import { InfoItem } from "./InfoItem";
+import { Input } from "./Input";
+import { Loading } from "./Loading";
 import { ModalDeleteTask } from "./ModalDeleteTask";
 import { ModalUpdateTask } from "./MoldalEditTask";
-import { Input } from "./Input";
-import { Button } from "./Button";
 
 export const CardTask = () => {
   const { tasks, setTasks, putTaskStatus } = useTasks();
@@ -39,6 +40,7 @@ export const CardTask = () => {
           setTasks([]);
           Cookies.remove("tasksData");
         }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         if (error.response?.status === 404) {
           setTasks([]);
@@ -52,7 +54,7 @@ export const CardTask = () => {
     }
 
     loadTasks();
-  }, []);
+  }, [setTasks]);
 
   useEffect(() => {
     let filtered = tasks;
@@ -169,7 +171,9 @@ export const CardTask = () => {
                         setTaskIdToEdit(task.id as string);
                         setIsModalEditOpen(true);
                       }}
-                      icon={<IcBaselineEdit className="text-color-black size-5" />}
+                      icon={
+                        <IcBaselineEdit className="text-color-black size-5" />
+                      }
                       nameTitle="Editar tarefa"
                       nameType="button"
                       id={`edit-${task.id}`}
@@ -181,11 +185,13 @@ export const CardTask = () => {
                         setTaskToDelete(task.id as string);
                         setIsModalOpen(true);
                       }}
-                      icon={<IcBaselineDelete className="text-color-black size-5" />}
+                      icon={
+                        <IcBaselineDelete className="text-color-black size-5" />
+                      }
                       nameTitle="Excluir tarefa"
                       nameType="button"
                       id={`delete-${task.id}`}
-                     cleanStyle={true}
+                      cleanStyle={true}
                     />
                     <input
                       type="checkbox"

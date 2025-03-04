@@ -1,4 +1,6 @@
 "use client";
+import { UserData } from "@/types";
+import Cookies from "js-cookie";
 import React, {
   createContext,
   useContext,
@@ -6,8 +8,6 @@ import React, {
   useState,
   ReactNode,
 } from "react";
-import Cookies from "js-cookie";
-import { UserData } from "@/types";
 
 interface UserContextType {
   userData: UserData | null;
