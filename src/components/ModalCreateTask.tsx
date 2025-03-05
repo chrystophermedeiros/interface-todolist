@@ -14,12 +14,14 @@ const schema = yup.object().shape({
   title: yup
     .string()
     .min(3, "O título deve ter no mínimo 3 caracteres")
+    .max(255, "O título deve ter no maximo 255 caracteres")
     .required("Título obrigatório"),
   description: yup
     .string()
     .min(5, "A desencrição deve ter no mínimo 5 caracteres")
-    .required("Descrição obrigatório"),
-  expirationDate: yup.string().required("Data obrigatório"),
+    .max(510, "A descrição deve ter no.maximo 510 caracteres")
+    .required("Descrição obrigatória"),
+  expirationDate: yup.string().required("Data obrigatória"),
   userId: yup.string(),
 });
 export const CreateUser = () => {
