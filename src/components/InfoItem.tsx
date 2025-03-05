@@ -9,8 +9,8 @@ export const InfoItem = ({
   labelClass?: string;
   valueClass?: string;
 }) => (
-  <p>
+  <div className="max-w-full break-words">
     <span className={`font-semibold ${labelClass}`}>{label}: </span>
     <span className={valueClass}>{value}</span>
-  </p>
+  </div>
 );

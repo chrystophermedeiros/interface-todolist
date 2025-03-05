@@ -7,6 +7,6 @@ export async function getGithubAvatar(username: string): Promise<string> {
     );
     return response.data.avatar_url;
   } catch (error) {
-    return "teste";
+    return "/modern-avatar.png";
   }
 }

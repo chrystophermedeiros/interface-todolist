@@ -142,28 +142,35 @@ export const CardTask = () => {
               <div className="flex justify-between">
                 <details
                   title="Clique para ver mais informações"
-                  className="flex flex-col gap-2"
+                  className="w-full flex flex-col gap-2"
                 >
                   <summary>Veja mais</summary>
-                  <InfoItem label="Descrição" value={task.description} />
-                  <InfoItem
-                    valueClass={`${
-                      task.status === "PENDENTE"
-                        ? "text-color-orange-fire"
-                        : "text-color-green-forest"
-                    }`}
-                    label="Status"
-                    value={task.status}
-                  />
-                  <InfoItem
-                    label="Expiração"
-                    value={
-                      task.expirationDate
-                        ? formatDate(task.expirationDate)
-                        : "Sem data"
-                    }
-                  />
+                  <div className="w-full">
+                    <InfoItem label="Descrição" value={task.description} />
+                  </div>
+                  <div className="w-full">
+                    <InfoItem
+                      valueClass={`${
+                        task.status === "PENDENTE"
+                          ? "text-color-orange-fire"
+                          : "text-color-green-forest"
+                      }`}
+                      label="Status"
+                      value={task.status}
+                    />
+                  </div>
+                  <div className="w-full">
+                    <InfoItem
+                      label="Expiração"
+                      value={
+                        task.expirationDate
+                          ? formatDate(task.expirationDate)
+                          : "Sem data"
+                      }
+                    />
+                  </div>
                 </details>
+
                 <div className="flex items-start">
                   <div className="flex items-center gap-3">
                     <Button
