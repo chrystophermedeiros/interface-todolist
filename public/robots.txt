@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://interface-todolist.vercel.app/
+
+# Sitemaps
+Sitemap: https://interface-todolist.vercel.app/sitemap.xml
