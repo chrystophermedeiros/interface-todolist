@@ -21,8 +21,12 @@ const schema = yup.object().shape({
   title: yup
     .string()
     .min(3, "O título deve ter no mínimo 3 caracteres")
+    .max(255, "O título deve ter no.maximo 255 caracteres")
     .required("O título é obrigatório"),
-  description: yup.string().min(5, "O título deve ter no mínimo 3 caracteres"),
+  description: yup
+    .string()
+    .min(5, "A descrição deve ter no mínimo 3 caracteres")
+    .max(510, "A descrição deve ter no.maximo 510 caracteres"),
   expirationDate: yup.string(),
   status: yup.string(),
 });
