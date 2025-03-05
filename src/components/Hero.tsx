@@ -35,7 +35,10 @@ export const Hero = () => {
                 width={50}
                 height={50}
                 className="rounded-full"
-                src={avatarUrl || "https://api.github.com/users/teste"}
+                src={
+                  avatarUrl ||
+                  "https://avatars.githubusercontent.com/u/91613?v=4"
+                }
                 priority
                 alt="GitHub Avatar"
               />
@@ -45,7 +48,7 @@ export const Hero = () => {
             <div
               onClick={() => setShowDropdown(false)}
               title="Clique para fechar o menu de opções"
-              className="absolute flex flex-col gap-2 max-w-96 bg-background-primary border-b-2 border-background-primary shadow-md rounded-2xl p-4 right-1 top-16"
+              className="absolute break-words flex flex-col gap-2 max-w-full bg-background-primary border-b-2 border-background-primary shadow-md rounded-2xl p-4 right-0 top-16"
             >
               <InfoItem
                 labelClass="text-color-black-blue"
